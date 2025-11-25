@@ -3,7 +3,7 @@
 	desc = "You probably shouldn't be seeing this. Yell at the coders about it."
 	icon = 'modular_darkpack/modules/flags/icons/pride_flags.dmi'
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride, 32)
 
 /obj/structure/sign/flag/pride/click_alt(mob/user)
 	var/init_icon_state = initial(icon_state)
