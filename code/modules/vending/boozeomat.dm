@@ -1,6 +1,6 @@
 /obj/machinery/vending/boozeomat
-	name = "\improper Booze-O-Mat"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	name = "\improper Alcoholic-Merchandise Machine Cooler"
+	desc = "An advanced retail fridge, stocked to the brim with numerous brands from across the world."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
 	panel_type = "panel22"
@@ -89,8 +89,8 @@
 		/obj/item/reagent_containers/cup/glass/bottle/bitters = 5,
 	)
 
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
-	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
+	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a kindred spirit?;Quite delighted to serve you!;Is nobody thirsty in this city?"
+	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best medication.;Quite delighted to serve you!;Care for a nice, Cerveza Regina?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a Blue Stripe!;Kings Beer is good for you!;Only the finest alcohol!;Best quality booze since 1991!;Award-winning grog, circa 1997!;Maximum alcohol!;Man loves beer.;A toast for progress!;Need a new blender? then go on down to your local 99p store, conversion rates apply!"
 	refill_canister = /obj/item/vending_refill/boozeomat
 	default_price = PAYCHECK_CREW * 0.9
 	extra_price = PAYCHECK_COMMAND
