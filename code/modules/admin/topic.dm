@@ -715,7 +715,7 @@
 					status = "<font color='red'><b>Dead</b></font>"
 			health_description = "Status: [status]"
 			health_description += "<br>Brute: [lifer.get_brute_loss()] - Burn: [lifer.get_fire_loss()] - Toxin: [lifer.get_tox_loss()] - Suffocation: [lifer.get_oxy_loss()]"
-			health_description += "<br>Brain: [lifer.get_organ_loss(ORGAN_SLOT_BRAIN)] - Stamina: [lifer.get_stamina_loss()] - Aggravated: [lifer.getAggLoss()]" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+			health_description += "<br>Brain: [lifer.get_organ_loss(ORGAN_SLOT_BRAIN)] - Stamina: [lifer.get_stamina_loss()] - Aggravated: [lifer.get_agg_loss()]" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 		else
 			health_description = "This mob type has no health to speak of."
 

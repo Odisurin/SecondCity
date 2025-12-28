@@ -48,7 +48,7 @@
 					<font color='#ff9933'>[X.get_fire_loss()]</font> \
 					<font color='#00cc66'>[X.get_tox_loss()]</font> \
 					<font color='#00cccc'>[X.get_oxy_loss()]</font> \
-					<font color='#ff0000'>[X.getAggLoss()]</font>" // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+					<font color='#ff0000'>[X.get_agg_loss()]</font>" // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 
 ADMIN_VERB(display_tags, R_ADMIN, "View Tags", "Display all of the tagged datums.", ADMIN_CATEGORY_GAME)
 	var/index = 0

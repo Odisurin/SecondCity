@@ -184,7 +184,7 @@
 			if(!HAS_TRAIT(human_user, TRAIT_MEDICAL_HUD))
 				return
 			if(href_list["evaluation"])
-				if(!get_brute_loss() && !get_fire_loss() && !get_oxy_loss() && get_tox_loss() < 20 && !getAggLoss()) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+				if(!get_brute_loss() && !get_fire_loss() && !get_oxy_loss() && get_tox_loss() < 20 && !get_agg_loss()) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 					to_chat(human_user, "[span_notice("No external injuries detected.")]<br>")
 					return
 				var/span = "notice"
@@ -222,7 +222,7 @@
 						if(burndamage)
 							to_chat(human_user, "<span class='[span]'>[BP] appears to have [status]</span>")
 				// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
-				if(getAggLoss())
+				if(get_agg_loss())
 					to_chat(human_user, "<b>Grievous trauma analysis:</b>")
 					for(var/X in bodyparts)
 						var/obj/item/bodypart/BP = X

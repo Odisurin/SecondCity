@@ -327,7 +327,7 @@ Versioning
 		first_death["role"] = null
 		first_death["role"] = L.mind.assigned_role.title
 		first_death["area"] = "[AREACOORD(L)]"
-		first_death["damage"] = "<font color='#FF5555'>[L.get_brute_loss()]</font>/<font color='orange'>[L.get_fire_loss()]</font>/<font color='lightgreen'>[L.get_tox_loss()]</font>/<font color='lightblue'>[L.get_oxy_loss()]</font><font color='red'>[L.getAggLoss()]</font>" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+		first_death["damage"] = "<font color='#FF5555'>[L.get_brute_loss()]</font>/<font color='orange'>[L.get_fire_loss()]</font>/<font color='lightgreen'>[L.get_tox_loss()]</font>/<font color='lightblue'>[L.get_oxy_loss()]</font><font color='red'>[L.get_agg_loss()]</font>" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 		first_death["last_words"] = L.last_words
 
 	if(!SSdbcore.Connect())
@@ -349,7 +349,7 @@ Versioning
 		"brain" = L.get_organ_loss(ORGAN_SLOT_BRAIN) || BRAIN_DAMAGE_DEATH, //get_organ_loss returns null without a brain but a value is required for this column
 		"oxy" = L.get_oxy_loss(),
 		"tox" = L.get_tox_loss(),
-		"aggravated" = L.getAggLoss(), // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+		"aggravated" = L.get_agg_loss(), // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 		"stamina" = L.get_stamina_loss(),
 		"x_coord" = L.x,
 		"y_coord" = L.y,

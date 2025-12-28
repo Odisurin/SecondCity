@@ -57,6 +57,6 @@
 	if(dummy.get_stamina_loss())
 		TEST_FAIL("The dummy still had stamina damage after a fully heal!")
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
-	if(dummy.getAggLoss())
+	if(dummy.get_agg_loss())
 		TEST_FAIL("The dummy still had aggravated damage after a fully heal!")
 	// DARKPACK EDIT ADD END

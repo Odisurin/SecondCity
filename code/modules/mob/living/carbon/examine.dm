@@ -138,7 +138,7 @@
 				. += span_bolddanger("[t_He] [t_has] severe [damage_desc[BURN]]!")
 
 		// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
-		temp = getAggLoss()
+		temp = get_agg_loss()
 		if(temp)
 			if(temp < 25)
 				. += span_danger("[t_He] [t_has] minor [damage_desc[AGGRAVATED]].")

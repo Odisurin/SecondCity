@@ -53,7 +53,7 @@
 		stamina_loss = L.get_stamina_loss()
 		brain_loss = L.get_organ_loss(ORGAN_SLOT_BRAIN)
 		rewind_type = PROC_REF(rewind_living)
-		aggravated_loss = L.getAggLoss() // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+		aggravated_loss = L.get_agg_loss() // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 
 	if(iscarbon(parent))
 		var/mob/living/carbon/C = parent
@@ -104,7 +104,7 @@
 	master.set_oxy_loss(oxy_loss)
 	master.set_stamina_loss(stamina_loss)
 	master.set_organ_loss(ORGAN_SLOT_BRAIN, brain_loss)
-	master.setAggLoss(aggravated_loss) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+	master.set_agg_loss(aggravated_loss) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 	rewind()
 
 /datum/component/dejavu/proc/rewind_carbon()

@@ -620,7 +620,7 @@
 		clear_fullscreen("oxy")
 
 	//Fire and Brute damage overlay (BSSR)
-	var/hurtdamage = get_brute_loss() + get_fire_loss() + getAggLoss() + damageoverlaytemp // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+	var/hurtdamage = get_brute_loss() + get_fire_loss() + get_agg_loss() + damageoverlaytemp // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_DAMAGE_OVERLAY))
 		var/severity = 0
 		switch(hurtdamage)
@@ -827,7 +827,7 @@
 	if (HAS_TRAIT(src, TRAIT_DEFIB_BLACKLISTED))
 		return DEFIB_FAIL_BLACKLISTED
 
-	if ((get_brute_loss() >= MAX_REVIVE_BRUTE_DAMAGE) || (get_fire_loss() >= MAX_REVIVE_FIRE_DAMAGE) || (getAggLoss() >= MAX_REVIVE_AGGRAVATED_DAMAGE)) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+	if ((get_brute_loss() >= MAX_REVIVE_BRUTE_DAMAGE) || (get_fire_loss() >= MAX_REVIVE_FIRE_DAMAGE) || (get_agg_loss() >= MAX_REVIVE_AGGRAVATED_DAMAGE)) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 		return DEFIB_FAIL_TISSUE_DAMAGE
 
 	var/heart_status = SEND_SIGNAL(src, COMSIG_CARBON_DEFIB_HEART_CHECK) || can_defib_heart(get_organ_by_type(/obj/item/organ/heart))

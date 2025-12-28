@@ -93,8 +93,8 @@
 				newamt = L.get_stamina_loss()
 			// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 			if("aggravated")
-				L.adjustAggLoss(amount, forced = TRUE)
-				newamt = L.getAggLoss()
+				L.adjust_agg_loss(amount, forced = TRUE)
+				newamt = L.get_agg_loss()
 			// DARKPACK EDIT ADD END
 			else
 				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)

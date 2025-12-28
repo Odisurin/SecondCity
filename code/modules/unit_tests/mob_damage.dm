@@ -115,8 +115,8 @@
 			"[testing_mob] should have [amount] stamina damage, instead they have [testing_mob.get_stamina_loss()]!")
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(included_types & AGGLOSS)
-		TEST_ASSERT_EQUAL(round(testing_mob.getAggLoss(), 1), amount, \
-			"[testing_mob] should have [amount] aggravated damage, instead they have [testing_mob.getAggLoss()]!")
+		TEST_ASSERT_EQUAL(round(testing_mob.get_agg_loss(), 1), amount, \
+			"[testing_mob] should have [amount] aggravated damage, instead they have [testing_mob.get_agg_loss()]!")
 	// DARKPACK EDIT ADD END
 	return TRUE
 
@@ -157,9 +157,9 @@
 			"adjust_stamina_loss() should have returned [expected], but returned [damage_returned] instead!")
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(included_types & AGGLOSS)
-		damage_returned = round(testing_mob.adjustAggLoss(amount, updating_health = FALSE, forced = forced, required_bodytype = bodytypes), 1)
+		damage_returned = round(testing_mob.adjust_agg_loss(amount, updating_health = FALSE, forced = forced, required_bodytype = bodytypes), 1)
 		TEST_ASSERT_EQUAL(damage_returned, expected, \
-			"adjustAggLoss() should have returned [expected], but returned [damage_returned] instead!")
+			"adjust_agg_loss() should have returned [expected], but returned [damage_returned] instead!")
 	// DARKPACK EDIT ADD END
 	return TRUE
 
@@ -200,9 +200,9 @@
 			"set_stamina_loss() should have returned [expected], but returned [damage_returned] instead!")
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(included_types & AGGLOSS)
-		damage_returned = round(testing_mob.setAggLoss(amount, updating_health = FALSE, forced = forced), 1)
+		damage_returned = round(testing_mob.set_agg_loss(amount, updating_health = FALSE, forced = forced), 1)
 		TEST_ASSERT_EQUAL(damage_returned, expected, \
-			"setAggLoss() should have returned [expected], but returned [damage_returned] instead!")
+			"set_agg_loss() should have returned [expected], but returned [damage_returned] instead!")
 	// DARKPACK EDIT ADD END
 	return TRUE
 
@@ -508,8 +508,8 @@
 			"[testing_mob] should have [amount] stamina damage, instead they have [testing_mob.get_stamina_loss()]!")
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(included_types & AGGLOSS)
-		TEST_ASSERT_EQUAL(testing_mob.getAggLoss(), 0, \
-			"[testing_mob] should have [0] aggravated damage, instead they have [testing_mob.getAggLoss()]!")
+		TEST_ASSERT_EQUAL(testing_mob.get_agg_loss(), 0, \
+			"[testing_mob] should have [0] aggravated damage, instead they have [testing_mob.get_agg_loss()]!")
 	// DARKPACK EDIT ADD END
 	return TRUE
 

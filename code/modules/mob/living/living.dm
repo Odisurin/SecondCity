@@ -559,7 +559,7 @@
 	// DARKPACK EDIT CHANGE START - Torpor
 	if (HAS_TRAIT(src, TRAIT_CAN_ENTER_TORPOR) && !HAS_TRAIT(src, TRAIT_TORPOR))
 		log_message("Has [whispered ? "whispered his final words and" : ""]succumbed to Torpor with [round(health, 0.1)] points of health!", LOG_ATTACK)
-		adjustOxyLoss(health - HEALTH_THRESHOLD_DEAD)
+		adjust_oxy_loss(health - HEALTH_THRESHOLD_DEAD)
 		updatehealth()
 		if(!whispered)
 			to_chat(src, span_notice("You have succumbed to Torpor."))
@@ -567,7 +567,7 @@
 		torpor("damage")
 	else
 		log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] with [round(health, 0.1)] points of health!", LOG_ATTACK)
-		adjustOxyLoss(health - HEALTH_THRESHOLD_DEAD)
+		adjust_oxy_loss(health - HEALTH_THRESHOLD_DEAD)
 		updatehealth()
 		if(!whispered)
 			to_chat(src, span_notice("You have given up life and succumbed to death."))
@@ -835,7 +835,7 @@
 /mob/living/proc/updatehealth()
 	if(HAS_TRAIT(src, TRAIT_GODMODE))
 		return
-	set_health(maxHealth - get_oxy_loss() - get_tox_loss() - get_fire_loss() - get_brute_loss() - getAggLoss()) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+	set_health(maxHealth - get_oxy_loss() - get_tox_loss() - get_fire_loss() - get_brute_loss() - get_agg_loss()) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 	update_stat()
 	med_hud_set_health()
 	med_hud_set_status()
@@ -942,7 +942,7 @@
 	var/burn_to_heal = heal_to - get_fire_loss()
 	var/oxy_to_heal = heal_to - get_oxy_loss()
 	var/tox_to_heal = heal_to - get_tox_loss()
-	var/agg_to_heal = heal_to - getAggLoss() // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+	var/agg_to_heal = heal_to - get_agg_loss() // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 	if(brute_to_heal < 0)
 		adjust_brute_loss(brute_to_heal, updating_health = FALSE)
 	if(burn_to_heal < 0)
@@ -953,7 +953,7 @@
 		adjust_tox_loss(tox_to_heal, updating_health = FALSE, forced = TRUE)
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(agg_to_heal < 0)
-		adjustAggLoss(agg_to_heal, updating_health = FALSE)
+		adjust_agg_loss(agg_to_heal, updating_health = FALSE)
 	// DARKPACK EDIT ADD END
 
 	// Run updatehealth once to set health for the revival check
@@ -996,7 +996,7 @@
 		set_stamina_loss(0, updating_stamina = FALSE, forced = TRUE)
 	// DARKPACK EDIT ADD START - AGGRAVATED_DAMAGE
 	if(heal_flags & HEAL_AGGRAVATED)
-		setAggLoss(0, updating_health = FALSE, forced = TRUE)
+		set_agg_loss(0, updating_health = FALSE, forced = TRUE)
 	// DARKPACK EDIT ADD END
 
 	// I don't really care to keep this under a flag
@@ -2141,7 +2141,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			OXY:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[get_oxy_loss()]</a>
 			BRAIN:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brain' id='brain'>[get_organ_loss(ORGAN_SLOT_BRAIN)]</a>
 			STAMINA:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[get_stamina_loss()]</a>
-			AGGRAVATED:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=aggravated' id='aggravated'>[getAggLoss()]</a>
+			AGGRAVATED:<font size='1'><a href='byond://?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=aggravated' id='aggravated'>[get_agg_loss()]</a>
 		</font>
 	"} // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 
