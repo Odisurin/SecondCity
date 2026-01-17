@@ -276,6 +276,17 @@
 /obj/effect/decal/painting/third
 	icon_state = "painting3"
 
+/obj/effect/decal/painting/trad
+	name = "chinese traditional ink painting"
+	icon_state = "trad-art1"
+	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
+
+/obj/effect/decal/painting/trad/second
+	icon_state = "trad-art2"
+
+/obj/effect/decal/painting/trad/three
+	icon_state = "trad-art3"
+
 /obj/structure/jesuscross
 	name = "Jesus Christ on a cross"
 	desc = "Jesus said, “Father, forgive them, for they do not know what they are doing.” And they divided up his clothes by casting lots (Luke 23:34)."
@@ -687,6 +698,12 @@
 		else
 			burying = FALSE
 */
+
+/obj/structure/fluff/shrine
+	name = "\improper altar shrine"
+	desc = "An old rustic buddhist shrine, with a red cermaic roof."
+	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
+	icon_state = "budshrine"
 
 /obj/structure/fluff/tv
 	name = "\improper TV"
