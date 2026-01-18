@@ -276,8 +276,6 @@
 /obj/effect/decal/painting/third
 	icon_state = "painting3"
 
-// DARKPACK Chinese Decor - By Odis
-
 /obj/structure/painting/trad
 	name = "chinese traditional ink painting"
 	icon_state = "trad-art1"
