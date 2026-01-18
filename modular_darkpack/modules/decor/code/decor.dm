@@ -276,16 +276,28 @@
 /obj/effect/decal/painting/third
 	icon_state = "painting3"
 
-/obj/effect/decal/painting/trad
+// DARKPACK Chinese Decor - By Odis
+
+/obj/structure/painting/trad
 	name = "chinese traditional ink painting"
 	icon_state = "trad-art1"
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
+	desc = "Seems to be ink on a pleasant yellow canvas."
+	layer = SIGN_LAYER
 
-/obj/effect/decal/painting/trad/second
+/obj/structure/painting/trad/second
 	icon_state = "trad-art2"
 
-/obj/effect/decal/painting/trad/three
+/obj/structure/painting/trad/three
 	icon_state = "trad-art3"
+
+/obj/structure/fluff/shrine
+	name = "\improper altar shrine"
+	desc = "An old rustic buddhist shrine, with a red cermaic roof."
+	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
+	icon_state = "budshrine"
+	anchored = TRUE
+	density = TRUE
 
 /obj/structure/jesuscross
 	name = "Jesus Christ on a cross"
@@ -698,12 +710,6 @@
 		else
 			burying = FALSE
 */
-
-/obj/structure/fluff/shrine
-	name = "\improper altar shrine"
-	desc = "An old rustic buddhist shrine, with a red cermaic roof."
-	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
-	icon_state = "budshrine"
 
 /obj/structure/fluff/tv
 	name = "\improper TV"
