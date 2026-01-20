@@ -290,7 +290,7 @@
 	icon_state = "trad-art3"
 
 /obj/structure/fluff/shrine
-	name = "\improper altar shrine"
+	name = "altar shrine"
 	desc = "An old rustic buddhist shrine, with a red cermaic roof."
 	icon = 'modular_darkpack/modules/decor/icons/chinatown.dmi'
 	icon_state = "budshrine"
