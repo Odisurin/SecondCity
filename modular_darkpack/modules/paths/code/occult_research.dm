@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(occult_research)
 	name = "Occult Research"
-	flags = SS_BACKGROUND|SS_NO_INIT
+	ss_flags = SS_BACKGROUND|SS_NO_INIT
 	wait = 60 SECONDS // How often to process research points
 	var/base_research_rate = 0.5 // Base points per tick
 	var/necromancy_bonus = 0.5
@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(occult_research)
 			continue
 		if(H.stat >= HARD_CRIT)
 			continue
-		if(!HAS_TRAIT(H, TRAIT_THAUMATURGY_KNOWLEDGE))
+		if(!H.get_discipline(/datum/discipline/thaumaturgy))
 			continue
 
 		process_research_points(H)
@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(occult_research)
 	set category = "IC"
 	set desc = "Check your current research point balance."
 
-	if(!HAS_TRAIT(src, TRAIT_THAUMATURGY_KNOWLEDGE) && !HAS_TRAIT(src, TRAIT_NECROMANCY_KNOWLEDGE))
+	if(!get_discipline(/datum/discipline/thaumaturgy))
 		to_chat(src, span_alert("You lack occult knowledge."))
 		return
 

@@ -55,6 +55,8 @@
 /mob/living/carbon/human/proc/setup_organless_effects()
 	// All start without eyes, and get them via set species
 	become_blind(NO_EYES)
+	// And no ears, and get them via set species
+	ADD_TRAIT(src, TRAIT_DEAF, NO_EARS)
 	// Mobs cannot taste anything without a tongue; the tongue organ removes this on Insert
 	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 
@@ -64,7 +66,6 @@
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
 	GLOB.human_list -= src
-	GLOB.kindred_list -= src // DARKPACK EDIT ADD
 
 	if (mob_mood)
 		QDEL_NULL(mob_mood)
@@ -106,7 +107,7 @@
 		if(!same_id || (text2num(href_list["examine_time"]) + viable_time) < world.time)
 			to_chat(viewer, span_notice("You don't have that good of a memory. Examine [p_them()] again."))
 			return
-		if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
+		if(!isobserver(viewer) && HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 			to_chat(viewer, span_notice("You can't make out that ID anymore."))
 			return
 		if(!isobserver(viewer) && get_dist(viewer, src) > ID_EXAMINE_DISTANCE + 1) // leeway, ignored if the viewer is a ghost
@@ -191,8 +192,7 @@
 				var/status = ""
 				if(get_brute_loss())
 					to_chat(human_user, "<b>Physical trauma analysis:</b>")
-					for(var/X in bodyparts)
-						var/obj/item/bodypart/BP = X
+					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/brutedamage = BP.brute_dam
 						if(brutedamage > 0)
 							status = "received minor physical injuries."
@@ -207,8 +207,7 @@
 							to_chat(human_user, "<span class='[span]'>[BP] appears to have [status]</span>")
 				if(get_fire_loss())
 					to_chat(human_user, "<b>Analysis of skin burns:</b>")
-					for(var/X in bodyparts)
-						var/obj/item/bodypart/BP = X
+					for(var/obj/item/bodypart/BP as anything in get_bodyparts())
 						var/burndamage = BP.burn_dam
 						if(burndamage > 0)
 							status = "signs of minor burns."
@@ -655,10 +654,8 @@
 	// If we have a species, we need to handle mutant parts and stuff
 	if(dna?.species)
 		add_atom_colour(COLOR_BLACK, TEMPORARY_COLOUR_PRIORITY)
-		var/static/mutable_appearance/shock_animation_dna
-		if(!shock_animation_dna)
-			shock_animation_dna = mutable_appearance(icon, "electrocuted_base")
-			shock_animation_dna.appearance_flags |= RESET_COLOR|KEEP_APART
+		var/mutable_appearance/shock_animation_dna = mutable_appearance(icon, "electrocuted_base", appearance_flags = RESET_COLOR|KEEP_APART)
+		apply_height_filters(shock_animation_dna)
 		zap_appearance = shock_animation_dna
 
 	// Otherwise do a generic animation
@@ -801,10 +798,8 @@
 		if(!check_rights(R_SPAWN))
 			return
 		var/list/options = list("Clear"="Clear")
-		for(var/type in subtypesof(/datum/quirk))
+		for(var/type in valid_subtypesof(/datum/quirk))
 			var/datum/quirk/quirk_type = type
-			if(initial(quirk_type.abstract_parent_type) == type)
-				continue
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 		var/result = input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in sort_list(options)

@@ -24,9 +24,7 @@
 		"Endron Labourer"
 	)
 
-	allowed_splats = list(SPLAT_GAROU, SPLAT_KINDRED, SPLAT_NONE)
 //	allowed_tribes = list(TRIBE_WYRM, TRIBE_RONIN)
-	allowed_clans = VAMPIRE_CLAN_ALL
 	minimal_masquerade = 3
 
 	display_order = JOB_DISPLAY_ORDER_EMPLOYEE

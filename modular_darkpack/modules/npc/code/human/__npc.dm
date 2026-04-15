@@ -17,8 +17,6 @@
 	/// my_backup_weapon = type_path
 	/// This only determines my_weapon, you set my_backup_weapon yourself
 	/// The last entry in the list for a type of NPC should always have 100 as the index
-	// DARKPACK TODO - reimplement weapons
-	/*
 	var/static/list/role_weapons_chances = list(
 		BANDIT_TYPE_NPC = list(
 			/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle = 33,
@@ -30,7 +28,6 @@
 			/obj/item/gun/ballistic/automatic/darkpack/ar15 = 100,
 		)
 	)
-	*/
 	var/datum/socialrole/socialrole
 
 	var/is_talking = FALSE
@@ -98,14 +95,11 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /mob/living/carbon/human/npc/LateInitialize(mapload)
-	// DARKPACK TODO - reimplement weapons
-	/*
 	if (role_weapons_chances.Find(type))
 		for(var/weapon in role_weapons_chances[type])
 			if(prob(role_weapons_chances[type][weapon]))
 				my_weapon = new weapon(src)
 				break
-	*/
 
 	if (!my_weapon && my_weapon_type)
 		my_weapon = new my_weapon_type(src)
@@ -173,12 +167,12 @@
 		return
 	is_talking = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 0.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 2 SECONDS)
 
 /mob/living/carbon/human/npc/proc/start_talking(message)
 	create_typing_indicator()
 	var/typing_delay = round(length_char(message) * 0.5)
-	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(0.1 SECONDS, typing_delay))
+	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(3 SECONDS, typing_delay))
 
 /mob/living/carbon/human/npc/proc/finish_talking(message)
 	remove_typing_indicator()

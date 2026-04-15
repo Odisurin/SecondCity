@@ -22,7 +22,7 @@
 /obj/item/ammo_box/magazine/internal/cylinder/rev44
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
-	caliber = CALIBER_44
+	caliber = CALIBER_44MAG
 	max_ammo = 6
 
 /obj/item/gun/ballistic/revolver/darkpack
@@ -35,7 +35,7 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev44
-	initial_caliber = CALIBER_44
+	initial_caliber = CALIBER_44MAG
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/revolver.ogg'
 	vary_fire_sound = FALSE
 	fire_sound_volume = 85
@@ -60,7 +60,7 @@
 /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPARA
 	max_ammo = 6
 
 //PISTOLS
@@ -80,7 +80,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "deagle"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
-	caliber = CALIBER_44
+	caliber = CALIBER_44MAG
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -101,7 +101,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "deagle"
 	ammo_type = /obj/item/ammo_casing/vampire/c50
-	caliber = CALIBER_50
+	caliber = CALIBER_50CAL
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -112,6 +112,7 @@
 	inhand_icon_state = "deagle"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m50
 	fire_sound_volume = 125 //MY EARS
+	weapon_weight = WEAPON_MEDIUM	//Firing .50 at 70 dam, think this is fair.
 
 /obj/item/ammo_box/magazine/darkpack45acp
 	name = "pistol magazine (.45 ACP)"
@@ -119,7 +120,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "m1911"
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
-	caliber = CALIBER_45
+	caliber = CALIBER_45ACP
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -140,7 +141,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "glock19"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPARA
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -165,7 +166,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "glock21"
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
-	caliber = CALIBER_45
+	caliber = CALIBER_45ACP
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -214,7 +215,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "semi9mm"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPARA
 	max_ammo = 18
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	custom_price = 200
@@ -230,7 +231,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "uzi"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPARA
 	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -243,6 +244,7 @@
 	burst_size = 5
 	spread = 11
 	recoil = 5
+	weapon_weight = WEAPON_MEDIUM
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -256,7 +258,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "mp5"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPARA
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -268,15 +270,22 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	inhand_icon_state = "mp5"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack9mp5
-	burst_size = 4
+	burst_size = 1
 	spread = 4
 	recoil = 3
+	weapon_weight = WEAPON_MEDIUM
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/mp5.ogg'
 	serial_type = "H&K"
+	var/rof = 0.15 SECONDS
+
+/obj/item/gun/ballistic/automatic/darkpack/mp5/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
+
 
 /obj/item/ammo_box/magazine/darkpack45smg
 	name = ".45 SMG magazine"
@@ -284,7 +293,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "mac10" //uzi sprite placeholder
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
-	caliber = CALIBER_45
+	caliber = CALIBER_45ACP
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -296,10 +305,11 @@
 	icon_state = "mac10"
 	inhand_icon_state = "mac10"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack45smg
-	burst_size = 7 //if any other gun has the same fire rate as this gun, increase this gun so its the new fastest
+	burst_size = 1
 	spread = 16 //spray and pray
 	burst_delay = 1
 	recoil = 6
+	weapon_weight = WEAPON_MEDIUM
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	can_suppress = TRUE
@@ -307,6 +317,11 @@
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/mac10.ogg' // DARKPACK sound effect
 	serial_type = "GBI"
+	var/rof = 0.055 SECONDS //1090 RPM, if any other gun has the same fire rate as this gun, increase this gun so its the new fastest
+
+/obj/item/gun/ballistic/automatic/darkpack/mac10/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
 
 /obj/item/ammo_box/magazine/darkpack45custom
 	name = ".45 custom magazine"
@@ -314,7 +329,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "mac10" //uzi sprite placeholder
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
-	caliber = CALIBER_45
+	caliber = CALIBER_45ACP
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -339,7 +354,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "mp7"
 	ammo_type = /obj/item/ammo_casing/vampire/c46pdw
-	caliber = CALIBER_46
+	caliber = CALIBER_46HK
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -349,7 +364,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "mp7"
 	ammo_type = /obj/item/ammo_casing/vampire/c46pdw
-	caliber = CALIBER_46
+	caliber = CALIBER_46HK
 	max_ammo = 40
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -361,15 +376,21 @@
 	icon_state = "mp7"
 	inhand_icon_state = "mp7"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack/c46pdw
-	burst_size = 3
+	burst_size = 1
 	spread = 3
 	recoil = 2
+	weapon_weight = WEAPON_MEDIUM
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/mp5.ogg'
 	serial_type = "H&K"
+	var/rof = 0.1 SECONDS //600 RPM,
+
+/obj/item/gun/ballistic/automatic/darkpack/mp7/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
 
 /obj/item/ammo_box/magazine/darkpack556
 	name = "carbine magazine (5.56mm)"
@@ -377,7 +398,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "rifle"
 	ammo_type = /obj/item/ammo_casing/vampire/c556mm
-	caliber = CALIBER_556
+	caliber = CALIBER_556NATO
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -396,6 +417,7 @@
 	inhand_icon_state = "rifle"
 	worn_icon_state = "rifle"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack556
 	burst_size = 2
 	fire_delay = 2
@@ -418,6 +440,7 @@
 	inhand_icon_state = "huntrifle"
 	worn_icon_state = "sks"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack556/hunt
 	burst_size = 1
 	fire_delay = 1
@@ -437,7 +460,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "ak"
 	ammo_type = /obj/item/ammo_casing/vampire/c545mm
-	caliber = CALIBER_545
+	caliber = CALIBER_545SOVIET
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -451,10 +474,10 @@
 	inhand_icon_state = "ak74"
 	worn_icon_state = "sks"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack545
 	recoil = 5
-	burst_size = 3
-	fire_delay = 3
+	burst_size = 1
 	spread = 8
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
@@ -462,6 +485,11 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/ak.ogg'
 	masquerade_violating = TRUE
 	serial_type = "KA"
+	var/rof = 0.2 SECONDS //300 RPM
+
+/obj/item/gun/ballistic/automatic/darkpack/ak74/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
 
 /obj/item/ammo_box/magazine/darkpackaug
 	name = "AUG magazine (5.56mm)"
@@ -469,7 +497,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "aug"
 	ammo_type = /obj/item/ammo_casing/vampire/c556mm
-	caliber = CALIBER_556
+	caliber = CALIBER_556NATO
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -482,6 +510,7 @@
 	inhand_icon_state = "aug"
 	worn_icon_state = "aug"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpackaug
 	burst_size = 3
 	fire_delay = 2
@@ -501,7 +530,7 @@
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
-	caliber = CALIBER_45
+	caliber = CALIBER_45ACP
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -513,10 +542,10 @@
 	icon_state = "thompson"
 	inhand_icon_state = "thompson"
 	w_class = WEIGHT_CLASS_NORMAL
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpackthompson
 	recoil = 5
-	burst_size = 5
-	fire_delay = 3
+	burst_size = 1
 	spread = 15
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
@@ -524,11 +553,16 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/thompson.ogg'
 	masquerade_violating = TRUE
 	serial_type = "AO"
+	var/rof = 0.15 SECONDS //400 RPM
+
+/obj/item/gun/ballistic/automatic/darkpack/thompson/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
 
 /obj/item/ammo_box/magazine/internal/darkpack/lever
 	name = "lever action internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
-	caliber = CALIBER_44
+	caliber = CALIBER_44MAG
 	max_ammo = 13
 
 /obj/item/gun/ballistic/rifle/darkpack/lever
@@ -543,6 +577,7 @@
 	inhand_icon_state = "lever"
 	worn_icon_state = "lever"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/darkpack/lever
 	bolt_wording = "bolt"
 	need_bolt_lock_to_interact = TRUE
@@ -557,7 +592,6 @@
 	recoil = 2
 	fire_delay = 1					//It's bolt-action. Fast as you can go really; which is still pretty slow.
 	burst_size = 1
-	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5 //~52 damage vs 35 base .44 damage. It's ok, on par with 5.56 but lower pen and slower to fire due to bolt action.
 	masquerade_violating = FALSE
@@ -567,7 +601,7 @@
 	name = "sniper rifle internal magazine"
 	desc = "Oh god, this shouldn't be here"
 	ammo_type = /obj/item/ammo_casing/vampire/c50
-	caliber = CALIBER_50
+	caliber = CALIBER_50CAL
 	max_ammo = 5
 	//multiload = TRUE
 
@@ -580,6 +614,7 @@
 	inhand_icon_state = "sniper"
 	worn_icon_state = "sniper"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_HEAVY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampire/sniper
 	bolt_wording = "bolt"
 	bolt_type = BOLT_TYPE_STANDARD
@@ -594,7 +629,6 @@
 	fire_delay = 40
 	recoil = 7
 	burst_size = 1
-	w_class = WEIGHT_CLASS_NORMAL
 	//zoomable = TRUE
 	//zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	//zoom_out_amt = 5
@@ -604,7 +638,7 @@
 	masquerade_violating = TRUE
 	serial_type = "RB"
 
-/obj/item/gun/ballistic/automatic/darkpack/autosniper //just a test, do not spawn
+/obj/item/gun/ballistic/automatic/darkpack/autosniper
 	name = "auto-sniper rifle"
 	desc = "A semi-automatic marksman rifle. This particular model is very popular in video games as of late."
 	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
@@ -612,8 +646,9 @@
 	icon_state = "psg1"
 	inhand_icon_state = "psg1"
 	worn_icon_state = "sniper"
+	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
-	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack556 //placeholder
+	accepted_magazine_type = /obj/item/ammo_box/magazine/vamp762x51PSG1
 	bolt_wording = "bolt"
 	bolt_type = BOLT_TYPE_LOCKING
 	semi_auto = TRUE
@@ -629,17 +664,29 @@
 	fire_delay = 5
 	spread = 2
 	recoil = 6
-	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5
 	actions_types = list()
 	masquerade_violating = TRUE
 	serial_type = "DS"
 
+/obj/item/ammo_box/magazine/vamp762x51PSG1
+	name = "PSG1 magazine (7.62x51mm)"
+	desc = "A magazine for the PSG1 loaded in 7.62 NATO."
+	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
+	//lefthand_file = 'code/modules/wod13/lefthand.dmi'
+	//righthand_file = 'code/modules/wod13/righthand.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi') // DARKPACK TODO: this needs a sprite
+	icon_state = "psg1"
+	ammo_type = /obj/item/ammo_casing/vampire/c762x51mm
+	caliber = CALIBER_762NATO
+	max_ammo = 10
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
 /obj/item/ammo_box/magazine/internal/vampshotgun
 	name = "shotgun internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
-	caliber = CALIBER_SHOTGUN
+	caliber = CALIBER_12G
 	//multiload = FALSE
 	max_ammo = 6
 	masquerade_violating = FALSE
@@ -670,7 +717,7 @@
 /obj/item/ammo_box/magazine/internal/darkpack_dbarrel
 	name = "double barrel internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
-	caliber = CALIBER_SHOTGUN
+	caliber = CALIBER_12G
 	max_ammo = 2
 	masquerade_violating = FALSE
 
@@ -709,13 +756,18 @@
 	. = ..()
 	icon_state = "[base_icon_state][!chambered ? "_empty" : ""][sawn_off ? "_sawn" : ""]"
 
+//Unique sawn-off checks
+/obj/item/gun/ballistic/shotgun/vampire/doublebarrel/sawoff(mob/user, obj/item/saw, handle_modifications = TRUE)
+	. = ..()
+	weapon_weight = WEAPON_MEDIUM	//Lets you one-hand it on sawing.
+
 /obj/item/ammo_box/magazine/darkpackautoshot
 	name = "shotgun magazine (12ga)"
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	icon_state = "spas15"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g/buck
-	caliber = CALIBER_SHOTGUN
+	caliber = CALIBER_12G
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
@@ -728,6 +780,7 @@
 	inhand_icon_state = "spas15"
 	worn_icon_state = "rifle"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_HEAVY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpackautoshot
 	burst_size = 1
 	fire_delay = 2
@@ -762,14 +815,14 @@
 	serial_shown = FALSE	//No serial, it's a crossbow.
 
 /obj/item/ammo_box/magazine/internal/vampcrossbow
-	ammo_type = /obj/item/ammo_casing/vampire/bolt
-	caliber = CALIBER_BOLT
+	ammo_type = /obj/item/ammo_casing/caseless/bolt
+	caliber = CALIBER_CROSSBOWBOLT
 	max_ammo = 2
 
 /obj/item/ammo_box/magazine/internal/vampire/musket
 	name = "musket internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c75
-	caliber = CALIBER_MUSKET
+	caliber = CALIBER_75BALL
 	max_ammo = 1	//It's a fucking musket
 
 /obj/item/gun/ballistic/automatic/darkpack/musket
@@ -781,6 +834,7 @@
 	inhand_icon_state = "musket"
 	worn_icon_state = "musket"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_HEAVY
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampire/musket
 	bolt_type = BOLT_TYPE_NO_BOLT
 	semi_auto = TRUE	//This is so it ejects/destroys the casing on firing.
@@ -797,6 +851,6 @@
 	serial_shown = FALSE	//No serial, it's a musket.
 	actions_types = list()
 
-/obj/item/gun/ballistic/automatic/darkpack/musket/process_fire(mob/living/user)
+/obj/item/gun/ballistic/automatic/darkpack/musket/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	..()
 	new /obj/effect/particle_effect/fluid/smoke(get_ranged_target_turf(user, user.dir, 1))

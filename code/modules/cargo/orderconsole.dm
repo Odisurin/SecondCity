@@ -51,9 +51,9 @@
 		if(!bank)
 			return ITEM_INTERACT_BLOCKING
 		var/dolla = tool.get_item_credit_value()
-		to_chat(user, span_notice("You insert [dolla] dollars into [src]."))
+		to_chat(user, span_notice("You insert [dolla] [MONEY_NAME] into [src]."))
 		bank.adjust_money(dolla, "Supply Console: Deposit")
-		to_chat(usr, span_notice("You have deposited [dolla] dollars into the account. The new balance is [bank.account_balance] dollars."))
+		to_chat(usr, span_notice("You have deposited [dolla] [MONEY_NAME] into the account. The new balance is [bank.account_balance] [MONEY_NAME]."))
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
 	// DARKPACK EDIT ADD END
@@ -309,6 +309,7 @@
 			if(pack.access_view && !(pack.access_view in access) && personal_department)
 				// We want to block cargo requests when a player is requesting a restricted pack that they don't have access to.
 				// BUT only when it's requested with non-cargo funds, as cargo had direct oversight over their own purchases with their own budget.
+				// HOWEVER, this shouldn't prevent someone from buying something using their own personal funds.
 				say("ERROR: User lacks the requisite access for this purchase request.")
 				return
 

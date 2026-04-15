@@ -12,7 +12,7 @@
 
 /obj/item/clothing/under/vampire/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 75, "undersuit", FALSE)
+	AddComponent(/datum/component/selling, 10, "undersuit", FALSE)
 
 /obj/item/clothing/under/vampire/brujah
 	name = "punk attire"
@@ -97,6 +97,26 @@
 	name = "punk rocker outfit"
 	desc = "A white, sweat stained shirt with a giant black skull on the front, it makes a statement. Maybe 'I don't use deoderant' but, a statement nontheless."
 	icon_state = "dirty"
+
+/obj/item/clothing/under/vampire/sceneleopard
+	name = "revealing outfit"
+	desc = "You never thought you needed spaghetti straps."
+	icon_state = "scenetop_leopard"
+
+/obj/item/clothing/under/vampire/scenemoody
+	name = "moody attire"
+	desc = "A classic My Chemistry Romance top."
+	icon_state = "scenetop_moody"
+
+/obj/item/clothing/under/vampire/scenezim
+	name = "intruder zim attire"
+	desc = "A top from your favorite show, Intruder Zim"
+	icon_state = "scenetop_zim"
+
+/obj/item/clothing/under/vampire/scenepink
+	name = "popular Outfit"
+	desc = "It almost makes you feel like a mean girl"
+	icon_state = "scenetop_pink"
 
 /obj/item/clothing/under/vampire/turtleneck_white
 	name = "white turtleneck"
@@ -488,5 +508,4 @@
 	name = "Endron executive suitskirt"
 	desc = "A white designer suitskirt with a green dress shirt. This one has an Endron International tag on it!"
 	icon_state = "pentex_executiveskirt"
-
 

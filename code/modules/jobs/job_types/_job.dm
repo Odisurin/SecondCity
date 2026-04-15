@@ -136,6 +136,9 @@
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
 
+	/// How desensitized this job is to seeing death as a base - applied with the job
+	var/desensitized_base = 1.0
+
 /datum/job/New()
 	. = ..()
 	// DARKPACK EDIT ADD START - ALTERNATIVE_JOB_TITLES
@@ -154,6 +157,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(length(mind_traits))
 		spawned.mind.add_traits(mind_traits, JOB_TRAIT)
+
+	spawned.mind.desensitized_level = clamp(desensitized_base, DESENSITIZED_MINIMUM, spawned.mind.desensitized_level)
 
 	var/obj/item/organ/liver/liver = spawned.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(liver && length(liver_traits))
@@ -211,6 +216,21 @@
 		bank_account.payday(STARTING_PAYCHECKS, free = TRUE)
 		account_id = bank_account.account_id
 		bank_account.replaceable = FALSE
+		// DARKPACK EDIT ADD - Finance affects starting money
+		if(st_get_stat(STAT_FINANCE))
+			var/finance = st_get_stat(STAT_FINANCE)
+			switch(finance)
+				if(1)
+					bank_account.account_balance = rand(800, 1200)
+				if(2)
+					bank_account.account_balance = rand(2000, 3000)
+				if(3)
+					bank_account.account_balance = rand(4000, 6000)
+				if(4)
+					bank_account.account_balance = rand(7000, 9000)
+				if(5)
+					bank_account.account_balance = rand(11000, 14000)
+		// DARKPACK EDIT ADD END - Finance affects starting money
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD
 
